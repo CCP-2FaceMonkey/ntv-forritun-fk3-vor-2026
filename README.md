@@ -14,7 +14,7 @@ A Vite + TypeScript boilerplate frontend project.
 
 ### Prerequisites
 
-- Node.js (version 14 or higher)
+- Node.js (version 20.19.0 or higher, or Node.js 22.12.0+)
 - npm (comes with Node.js)
 
 ### Installation
