@@ -1,15 +1,21 @@
+import { Input as ShadInput } from "@/components/ui/input"
 
-export function Input({ value, onChange }: { value: string; onChange: (e: React.ChangeEvent<HTMLInputElement>) => void }) {
-    
-    function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-        onChange(e); //e.target.value
-    }
-    return (
-        <input
-            type="text"
-            value={value}
-            onChange={(e) => handleChange(e)}
-        />
-    );
+
+export const Input = <div className="bg-blue-700"><ShadInput /></div>
+
+type Props = {
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    type?: "text" | "email";
 }
-        
+
+export const OldInput = ({
+    value,
+    onChange,
+    type = 'text',
+}: Props) => {
+    function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+        onChange(e);
+    }
+    return <ShadInput value={value} onChange={(e) => handleChange(e)} type={type} placeholder="enter value..." />;
+}
