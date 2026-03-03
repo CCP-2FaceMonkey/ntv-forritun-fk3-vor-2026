@@ -3,6 +3,7 @@ import { Input } from "./Input";
 import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./Button";
 
+
 export function ShopCard() {
     const [myName, setMyName] = useState('Hjalti')
     const [email, setEmail] = useState('')
