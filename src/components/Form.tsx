@@ -17,7 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
-import { Button } from "./Button";
+import { Button, ButtonReset } from "./Button";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 import { Label } from "./ui/label";
 
@@ -26,16 +26,23 @@ export function Form() {
   const [myLastName, setMyLastName] = useState("");
   const [myEmail, setMyEmail] = useState("");
   const [myPhone, setMyPhone] = useState("");
-  const [bag, setBag] = useState<string | undefined>(
-    undefined
-  );
+  const [bag, setBag] = useState<string | undefined>(undefined);
   const [selectedFruit, setSelectedFruit] = useState("");
 
+  function handleReset() {
+    setMyFirstName("");
+    setMyLastName("");
+    setMyEmail("");
+    setMyPhone("");
+    setSelectedFruit("");
+    setBag("");
+  }
+
   useEffect(() => {
-    if (bag !=null) {
-        console.log(setBag);
+    if (bag != null) {
+      console.log(setBag);
     }
-  },[bag])
+  }, [bag]);
 
   return (
     <Card>
@@ -47,7 +54,7 @@ export function Form() {
           onSubmit={(e) => {
             e.preventDefault();
             window.alert(
-              `${myFirstName} ${myLastName} ${myEmail} ${myPhone} just placed an order for ${selectedFruit}. Bag: ${bag}`,
+              `${myFirstName} ${myLastName} (Email: ${myEmail} Phone: ${myPhone}) just placed an order for ${selectedFruit}. Bag: ${bag}`,
             );
             console.log(
               myFirstName,
@@ -66,7 +73,6 @@ export function Form() {
                   id="firstName"
                   autoComplete="off"
                   placeholder="Evil"
-                  value={myFirstName}
                   onChange={(e) => {
                     setMyFirstName(e.target.value);
                   }}
@@ -103,7 +109,7 @@ export function Form() {
                 <FieldLabel htmlFor="Bag">
                   Would you like a bag with the order?
                 </FieldLabel>
-                <RadioGroup value={bag} onValueChange={setBag}>
+                <RadioGroup onValueChange={(value) => setBag(value)}>
                   <div className="flex items-center gap-3">
                     <RadioGroupItem value="yes" id="option-yes" />
                     <Label htmlFor="option-yes">Yes</Label>
@@ -123,8 +129,9 @@ export function Form() {
           <FieldSet>
             <FieldGroup>
               <Select
-                onValueChange={(e) => {
-                  setSelectedFruit(e);
+                value={selectedFruit}
+                onValueChange={(value) => {
+                  setSelectedFruit(value);
                 }}
               >
                 <SelectTrigger className="w-full max-w-48">
@@ -144,6 +151,7 @@ export function Form() {
             </FieldGroup>
           </FieldSet>
           <Button type="submit" />
+          <ButtonReset type="reset" onClick={handleReset} />
         </form>
       </div>
     </Card>
