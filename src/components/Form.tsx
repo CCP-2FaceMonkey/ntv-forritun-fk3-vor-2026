@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Input } from "./Input";
 import { Card, CardHeader, CardTitle } from "./ui/card";
 import {
@@ -26,8 +26,16 @@ export function Form() {
   const [myLastName, setMyLastName] = useState("");
   const [myEmail, setMyEmail] = useState("");
   const [myPhone, setMyPhone] = useState("");
-  const [bag, setBag] = useState<string | undefined>(undefined);
+  const [bag, setBag] = useState<string | null>(null);
   const [selectedFruit, setSelectedFruit] = useState("");
+
+  const firstNameRef = useRef("");
+  const lastNameRef = useRef("");
+  const emailRef = useRef("");
+  const phoneRef = useRef("");
+  const bagRef = useRef<string | null>(null);
+  const selectedFruitRef = useRef("");
+
 
   function handleReset() {
     setMyFirstName("");
@@ -54,7 +62,7 @@ export function Form() {
           onSubmit={(e) => {
             e.preventDefault();
             window.alert(
-              `${myFirstName} ${myLastName} (Email: ${myEmail} Phone: ${myPhone}) just placed an order for ${selectedFruit}. Bag: ${bag}`,
+              `${firstNameRef.current} ${lastNameRef.current} (Email: ${emailRef.current} Phone: ${phoneRef.current}) just placed an order for ${selectedFruitRef.current}. Bag: ${bagRef.current}`,
             );
             console.log(
               myFirstName,
@@ -62,6 +70,7 @@ export function Form() {
               myEmail,
               myPhone,
               selectedFruit,
+              firstNameRef
             );
           }}
         >
@@ -74,7 +83,7 @@ export function Form() {
                   autoComplete="off"
                   placeholder="Evil"
                   onChange={(e) => {
-                    setMyFirstName(e.target.value);
+                    firstNameRef.current = e.target.value;
                   }}
                 />
                 <FieldLabel htmlFor="lastName">Last name</FieldLabel>
@@ -83,7 +92,7 @@ export function Form() {
                   autoComplete="off"
                   placeholder="Rabbit"
                   onChange={(e) => {
-                    setMyLastName(e.target.value);
+                    lastNameRef.current = e.target.value;
                   }}
                 />
                 <FieldLabel htmlFor="email">Email</FieldLabel>
@@ -93,7 +102,7 @@ export function Form() {
                   autoComplete="off"
                   placeholder="Evil@Rabbit.com"
                   onChange={(e) => {
-                    setMyEmail(e.target.value);
+                    emailRef.current = e.target.value;
                   }}
                 />
                 <FieldLabel htmlFor="Phone">Mobile number</FieldLabel>
@@ -103,7 +112,7 @@ export function Form() {
                   autoComplete="off"
                   placeholder="5812345"
                   onChange={(e) => {
-                    setMyPhone(e.target.value);
+                    phoneRef.current = e.target.valu;
                   }}
                 />
                 <FieldLabel htmlFor="Bag">
@@ -156,20 +165,4 @@ export function Form() {
       </div>
     </Card>
   );
-}
-{
-  /* <Card>
-              <CardHeader>
-                  <CardTitle>Form</CardTitle>
-              </CardHeader>
-              <CardContent>
-                  <Input value={myName} onChange={(e) => setMyName(e.target.value)} />
-                  <Input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <p>Card Content</p>
-              </CardContent>
-          </Card> */
 }
