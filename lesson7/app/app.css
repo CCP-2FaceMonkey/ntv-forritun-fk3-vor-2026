@@ -1,6 +1,6 @@
 /* Light theme (default) */
 :root,
-[data-theme='light'] {
+[data-theme="light"] {
   --bg: #fafafa;
   --bg-card: #ffffff;
   --text: #1a1a1a;
@@ -9,8 +9,20 @@
   --border: #e5e7eb;
 }
 
-/* Dark theme */
-[data-theme='dark'] {
+/* Dark theme – system preference when no data-theme is set */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --bg: #0f0f0f;
+    --bg-card: #1a1a1a;
+    --text: #fafafa;
+    --text-muted: #a3a3a3;
+    --accent: #60a5fa;
+    --border: #2a2a2a;
+  }
+}
+
+/* Dark theme – when user has toggled or React has set data-theme */
+[data-theme="dark"] {
   --bg: #0f0f0f;
   --bg-card: #1a1a1a;
   --text: #fafafa;

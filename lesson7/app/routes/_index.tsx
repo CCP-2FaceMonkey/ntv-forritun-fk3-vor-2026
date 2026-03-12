@@ -8,8 +8,8 @@ export default function Index() {
       <ThemeToggle />
       <div className="card">
         <p className="muted">
-          The theme is stored in localStorage and respects your system
-          preference on first visit.
+          The theme follows your system preference on load. Use the button to
+          switch for this session only.
         </p>
       </div>
     </main>

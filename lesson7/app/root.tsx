@@ -30,19 +30,6 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                var k = 'theme';
-                var s = localStorage.getItem(k);
-                var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                var theme = s === 'dark' || s === 'light' ? s : (dark ? 'dark' : 'light');
-                document.documentElement.setAttribute('data-theme', theme);
-              })();
-            `,
-          }}
-        />
         <Outlet />
         <ScrollRestoration />
         <Scripts />
