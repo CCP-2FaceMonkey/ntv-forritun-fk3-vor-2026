@@ -1,6 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { ThemeContext } from '~/root';
 
-type Theme = 'light' | 'dark';
+type Theme = {
+  theme: 'light' | 'dark';
+  setTheme: (theme: 'light' | 'dark') => void;
+};
 
 function getInitialTheme(): Theme {
   if (typeof document === 'undefined') return 'light';
@@ -14,7 +18,8 @@ function applyTheme(theme: Theme) {
 }
 
 export function ThemeToggle() {
-  const [theme, setThemeState] = useState<Theme>('light');
+  const { theme, setTheme } = useContext<Theme | null>(ThemeContext) as Theme;
+  console.log(theme, setTheme);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {

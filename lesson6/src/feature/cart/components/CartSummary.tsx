@@ -1,6 +1,6 @@
-import type { CartItem } from "@/types/cart.js";
-import { formatPrice } from "@/utils/formatPrice.js";
-import { Button } from "./Button.js";
+import type { CartItem } from '@cart/types/cart';
+import { formatPrice } from '@shared/utils/formatPrice';
+import { Button } from '@shared/components/Button';
 
 type CartSummaryProps = {
   items: CartItem[];
@@ -8,10 +8,7 @@ type CartSummaryProps = {
 };
 
 export function CartSummary({ items, onRemove }: CartSummaryProps) {
-  const total = items.reduce(
-    (sum, i) => sum + i.product.price * i.quantity,
-    0
-  );
+  const total = items.reduce((sum, i) => sum + i.product.price * i.quantity, 0);
 
   if (items.length === 0) {
     return <p className="empty">Cart is empty.</p>;
@@ -23,7 +20,8 @@ export function CartSummary({ items, onRemove }: CartSummaryProps) {
       <ul>
         {items.map(({ product, quantity }) => (
           <li key={product.id}>
-            {product.name} × {quantity} — {formatPrice(product.price * quantity)}
+            {product.name} × {quantity} —{' '}
+            {formatPrice(product.price * quantity)}
             <Button onClick={() => onRemove(product.id)}>Remove</Button>
           </li>
         ))}

@@ -1,21 +1,23 @@
-import { useState } from "react";
-import "./App.css";
-import { Form } from "./components/Form";
+// import { useState } from 'react';
+import './App.css';
+import { Form } from './components/Form';
 // import { ShopCard } from "./components/ShopCard";
 
-
 function App() {
-  const [state, setState] = useState(true)
+  // const [state, setState] = useState(false);
   return (
     <div className="w-full justify-center">
-      <button onClick={() => {
-        setState(s => !s)
-      }}>Click</button>
+      {/* <button
+        onClick={() => {
+          setState((s) => !s);
+        }}
+      >
+        {state ? 'Close Form' : 'Open Form'}
+      </button> */}
       {/* <ShopCard />
       <ShopCard /> */}
-      {state &&
-        <Form />
-      }
+      <Form />
+      {/* {state && <Form />} */}
     </div>
   );
 }

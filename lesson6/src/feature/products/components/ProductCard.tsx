@@ -1,6 +1,6 @@
-import type { Product } from "@/types/product.js";
-import { formatPrice } from "@/utils/formatPrice.js";
-import { Button } from "./Button.js";
+import type { Product } from '@products/types/product';
+import { formatPrice } from '@shared/utils/formatPrice';
+import { Button } from '@shared/components/Button';
 
 type ProductCardProps = {
   product: Product;

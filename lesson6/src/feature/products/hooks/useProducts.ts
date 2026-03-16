@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { fetchProducts } from "@/services/productService.js";
-import type { Product } from "@/types/product.js";
+import { useState, useEffect } from 'react';
+import { fetchProducts } from '@products/services/productService';
+import type { Product } from '@products/types/product';
 
 export function useProducts() {
   const [products, setProducts] = useState<Product[]>([]);

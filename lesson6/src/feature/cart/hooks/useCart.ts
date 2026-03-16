@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import { getCart, saveCart } from "@/services/cartService.js";
-import type { CartItem } from "@/types/cart.js";
-import type { Product } from "@/types/product.js";
+import { useState, useEffect } from 'react';
+import { getCart, saveCart } from '@cart/services/cartService';
+import type { CartItem } from '@cart/types/cart';
+import type { Product } from '@products/types/product';
 
 export function useCart() {
   const [items, setItems] = useState<CartItem[]>([]);
@@ -21,7 +21,7 @@ export function useCart() {
         return prev.map((i) =>
           i.product.id === product.id
             ? { ...i, quantity: i.quantity + quantity }
-            : i
+            : i,
         );
       }
       return [...prev, { product, quantity }];

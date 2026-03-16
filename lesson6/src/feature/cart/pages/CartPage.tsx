@@ -1,5 +1,5 @@
-import { useCart } from "@/hooks/useCart.js";
-import { CartSummary } from "@/components/CartSummary.js";
+import { useCart } from '@cart/hooks/useCart';
+import { CartSummary } from '@cart/components/CartSummary';
 
 export function CartPage() {
   const { items, removeFromCart } = useCart();

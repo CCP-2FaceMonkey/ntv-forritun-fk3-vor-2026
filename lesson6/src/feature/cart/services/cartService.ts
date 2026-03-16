@@ -1,6 +1,6 @@
-import type { CartItem } from "@/types/cart.js";
+import type { CartItem } from '@cart/types/cart';
 
-const storageKey = "cart";
+const storageKey = 'cart';
 
 export function getCart(): CartItem[] {
   try {
