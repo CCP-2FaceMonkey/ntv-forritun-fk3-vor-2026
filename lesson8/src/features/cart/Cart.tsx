@@ -1,14 +1,10 @@
-import { CartItemRow } from './components/CartItemRow';
-import { CartSummary } from './components/CartSummary';
-import type { CartItem } from './types';
+import { CartItemRow } from "./components/CartItemRow";
+import { CartSummary } from "./components/CartSummary";
+import { useAppStore } from "@/shared/store/appStore";
 
-type CartProps = {
-  items: CartItem[];
-  onQuantityChange?: (productId: string, quantity: number) => void;
-  onRemove?: (productId: string) => void;
-};
+export function Cart() {
+  const items = useAppStore((state) => state.items);
 
-export function Cart({ items, onQuantityChange, onRemove }: CartProps) {
   return (
     <section className="space-y-6">
       <h2 className="text-lg font-semibold">Cart</h2>
@@ -19,16 +15,12 @@ export function Cart({ items, onQuantityChange, onRemove }: CartProps) {
           <ul className="flex flex-col gap-4">
             {items.map((item) => (
               <li key={item.product.id}>
-                <CartItemRow
-                  item={item}
-                  onQuantityChange={onQuantityChange}
-                  onRemove={onRemove}
-                />
+                <CartItemRow item={item} />
               </li>
             ))}
           </ul>
           <aside>
-            <CartSummary items={items} />
+            <CartSummary />
           </aside>
         </div>
       )}

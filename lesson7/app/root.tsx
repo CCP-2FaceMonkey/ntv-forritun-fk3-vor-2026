@@ -5,8 +5,13 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+<<<<<<< HEAD
+} from "@remix-run/react";
+import { ThemeProvider } from "./context/ThemeContext";
+=======
 } from '@remix-run/react';
 import { createContext, useContext, useState } from 'react';
+>>>>>>> upstream/main
 
 type Theme = 'light' | 'dark';
 export const ThemeContext = createContext<Theme | null>(null);
@@ -19,10 +24,17 @@ export const links: LinksFunction = () => [
 
 export function meta() {
   return [
+<<<<<<< HEAD
+    { title: "Remix Theme App" },
+    {
+      name: "description",
+      content: "Simple Remix app with light and dark theme",
+=======
     { title: 'Remix Theme App' },
     {
       name: 'description',
       content: 'Simple Remix app with light and dark theme',
+>>>>>>> upstream/main
     },
   ];
 }
@@ -38,11 +50,19 @@ export default function App() {
         <Links />
       </head>
       <body>
+<<<<<<< HEAD
+        <ThemeProvider>
+          <Outlet />
+        </ThemeProvider>
+        <ScrollRestoration />
+        <Scripts />
+=======
         <ThemeContext.Provider value={{ theme, setTheme }}>
           <Outlet />
           <ScrollRestoration />
           <Scripts />
         </ThemeContext.Provider>
+>>>>>>> upstream/main
       </body>
     </html>
   );
