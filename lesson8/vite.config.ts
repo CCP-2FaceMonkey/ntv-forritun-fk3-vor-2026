@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import path from "path";
 import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
+=======
+import path from 'path';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from 'vitest/config';
+>>>>>>> 9f5e88ec880bff40904f19a75ce357b87183615e
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -23,7 +30,14 @@ export default defineConfig({
     },
   },
   test: {
+<<<<<<< HEAD
     environment: "jsdom",
     setupFiles: "./src/test/setup.ts",
   },
+=======
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: ['./src/test/setup.ts']
+  }
+>>>>>>> 9f5e88ec880bff40904f19a75ce357b87183615e
 });

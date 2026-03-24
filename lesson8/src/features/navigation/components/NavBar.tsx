@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { ShoppingBag, ShoppingCart } from 'lucide-react';
-import { useCart } from '@/features/cart/context/CartContext';
+import { useCart } from '@/features/cart/context/useCart';
 import { cn } from '@/shared/lib/utils';
 
 export function NavBar() {
