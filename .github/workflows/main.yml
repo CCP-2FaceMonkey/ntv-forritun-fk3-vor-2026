@@ -1,0 +1,20 @@
+  name: CI
+
+  on: 
+    push: [main]
+  pull_request:
+
+  jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - uses: actions/setup-node@v4
+          with:
+            node-version: 20
+            cache: npm
+            cache_dependancy_path: lesson10/package-lock.json
+        - run: npm ci
+        working-directory: lesson10
+        - run: npm run lint
+        working-directory: lesson10
