@@ -2,8 +2,11 @@ name: CI
 
 on:
   push:
-    branches: []
+    branches:
+      - verkefni-8
   pull_request:
+    branches:
+      - verkefni-8
 
 env:
   PROJECT: "lesson8"
@@ -18,10 +21,8 @@ jobs:
           node-version: 20
           cache: npm
           cache-dependency-path: ${{ env.PROJECT }}/package-lock.json
-      - name: Install Railway CLI
-        run: npm install -g @railway/cli
-      - name: Deploy to railway  
-        run: railway up --service  ${{ secrets.RAILWAY_SERVICE_ID }}        
+      - run: npm install -g @railway/cli
+      - run: railway up --service ${{ secrets.RAILWAY_SERVICE_ID }}
         working-directory: ${{ env.PROJECT }}
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}

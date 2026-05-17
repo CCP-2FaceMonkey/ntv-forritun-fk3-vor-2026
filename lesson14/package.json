@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/package.json",
   "name": "ntv-forritun-lesson14",
   "private": true,
   "version": "0.0.0",
@@ -15,9 +16,11 @@
     "cypress:run": "cypress run",
     "test:all": "npm run test:run && npm run e2e",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "chromatic": "npx chromatic --project-token=chpt_92087f4c579f955"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.11.2",
     "@tailwindcss/vite": "^4.2.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -25,14 +28,17 @@
     "radix-ui": "^1.4.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-redux": "^9.2.0",
     "react-router-dom": "^7.13.1",
     "tailwind-merge": "^3.5.0",
     "tailwindcss": "^4.2.1"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^5.1.2",
     "@eslint/js": "^9.39.1",
-    "@storybook/addon-a11y": "^10.3.5",
+    "@storybook/addon-a11y": "^10.3.6",
     "@storybook/addon-docs": "^10.3.5",
+    "@storybook/addon-onboarding": "^10.3.5",
     "@storybook/addon-vitest": "^10.3.5",
     "@storybook/react-vite": "^10.3.5",
     "@testing-library/cypress": "^10.1.0",
@@ -46,6 +52,7 @@
     "@vitest/browser": "^3.2.4",
     "@vitest/coverage-v8": "^3.2.4",
     "babel-plugin-react-compiler": "^1.0.0",
+    "chromatic": "^16.6.3",
     "cypress": "^15.3.0",
     "eslint": "^9.39.1",
     "eslint-plugin-cypress": "^6.3.1",
@@ -54,6 +61,8 @@
     "eslint-plugin-storybook": "^10.3.5",
     "globals": "^16.5.0",
     "jsdom": "^26.1.0",
+    "msw": "^2.14.2",
+    "msw-storybook-addon": "^2.0.7",
     "playwright": "^1.59.1",
     "shadcn": "^3.8.5",
     "start-server-and-test": "^2.1.3",
@@ -63,5 +72,10 @@
     "typescript-eslint": "^8.48.0",
     "vite": "^7.3.1",
     "vitest": "^3.2.4"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }
